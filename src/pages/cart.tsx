@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { VscError } from "react-icons/vsc";
-import { Link } from "react-router-dom";
+
 import CartItemComponent from "../components/cart-item";
+import { Button } from "antd";
+import { useNavigate } from "react-router-dom";
 
 const cartItems = [
   {
@@ -21,6 +23,7 @@ const discount = 400;
 const total = subtotal + tax + shippingCharges;
 
 const Cart = () => {
+  const navigate = useNavigate();
   const [couponCode, setCouponCode] = useState<string>("");
   const [isValidCouponCode, setIsValidCouponCode] = useState<boolean>(false);
 
@@ -74,7 +77,11 @@ const Cart = () => {
             </span>
           ))}
 
-        {cartItems.length > 0 && <Link to="/shipping">Checkout</Link>}
+        {cartItems.length > 0 && (
+          <Button type="primary" onClick={() => navigate("/shipping")}>
+            Check out
+          </Button>
+        )}
       </aside>
     </div>
   );

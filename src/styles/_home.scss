@@ -28,6 +28,7 @@
       h1 {
         @include heading(1px);
         margin-bottom: 3rem;
+        font-size: x-large;
         @include flex(row, space-between, center);
         &::before {
           content: "";
